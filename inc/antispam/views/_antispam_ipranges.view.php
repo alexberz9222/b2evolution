@@ -95,13 +95,19 @@ $Results->cols[] = array(
 		'order' => 'aipr_IPv4end',
 	);
 
+//@Alex: Adding date field
+$Results->cols[] = array(
+		'th' => T_('Date'),
+		'td' => '$aipr_date$',
+		'order' => 'aipr_date',
+		'default_dir' => 'D',
+);
 $Results->cols[] = array(
 		'th' => T_('User count'),
 		'td' => '$aipr_user_count$',
 		'order' => 'aipr_user_count',
 		'default_dir' => 'D',
 	);
-
 $Results->cols[] = array(
 		'th' => T_('Anon. contact form submits'),
 		'td' => '$aipr_contact_email_count$',
