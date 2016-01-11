@@ -31,6 +31,8 @@ class IPRange extends DataObject
 
 	var $user_count;
 
+	var $date;
+
 	var $status;
 
 	var $block_count;
@@ -50,9 +52,15 @@ class IPRange extends DataObject
 			$this->ID = $db_row->aipr_ID;
 			$this->IPv4start = $db_row->aipr_IPv4start;
 			$this->IPv4end = $db_row->aipr_IPv4end;
+			$this->date = strtotime($db_row->aipr_date);
 			$this->user_count = $db_row->aipr_user_count;
 			$this->status = $db_row->aipr_status;
 			$this->block_count = $db_row->aipr_block_count;
+		}
+		else
+		{	// New object:
+			global $localtimenow;
+			$this->date = $localtimenow;
 		}
 	}
 
@@ -120,6 +128,9 @@ class IPRange extends DataObject
 					'href="'.$admin_url.'?ctrl=antispam&amp;tab3=ipranges&amp;action=iprange_edit&amp;iprange_ID='.$ip_range->aipr_ID.'"' ), 'error' );
 			}
 		}
+
+		$aipr_date = param_date( 'aipr_date', T_('Please enter a valid date.'), true );
+		$this->set( 'date', $aipr_date, true );
 
 		return ! param_errors_detected();
 	}

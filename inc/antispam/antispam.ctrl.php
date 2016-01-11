@@ -456,6 +456,9 @@ switch( $action )
 		break;
 }
 
+//@Alex: Needs to include datepicker initializaiton when we have date field in sub action pages. we can use conditional include for specific actions.
+init_datepicker_js();
+
 if( $display_mode != 'js' )
 {
 	if( $tab == 'stats' )

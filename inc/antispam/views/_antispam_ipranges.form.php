@@ -38,9 +38,14 @@ $Form->begin_form( 'fform', ( $creating ?  T_('New IP Range') : T_('IP Range') )
 
 	$Form->select_input_array( 'aipr_status', $edited_IPRange->get( 'status' ), aipr_status_titles() , T_('Status'), '', array( 'force_keys_as_values' => true, 'background_color' => aipr_status_colors(), 'required' => true ) );
 
-	$Form->text_input( 'aipr_IPv4start', int2ip( $edited_IPRange->get( 'IPv4start' ) ), 50, T_('IP Range Start'), '', array( 'maxlength' => 15, 'required' => true ) );
+	//$Form->text_input( 'aipr_IPv4start', int2ip( $edited_IPRange->get( 'IPv4start' ) ), 50, T_('IP Range Start'), '', array( 'maxlength' => 15, 'required' => true ) );
 
-	$Form->text_input( 'aipr_IPv4end', int2ip( $edited_IPRange->get( 'IPv4end' ) ), 50, T_('IP Range End'), '', array( 'maxlength' => 15, 'required' => true ) );
+	//$Form->text_input( 'aipr_IPv4end', int2ip( $edited_IPRange->get( 'IPv4end' ) ), 50, T_('IP Range End'), '', array( 'maxlength' => 15, 'required' => true ) );
+
+	//@Alex: Interval control provides two input elements with 'to' as separator string.
+	$Form->interval( 'aipr_IPv4start', int2ip( $edited_IPRange->get( 'IPv4start' ) ), 'aipr_IPv4end', int2ip( $edited_IPRange->get( 'IPv4end' ) ), 15, T_('IP Range'), '',  array( 'maxlength' => 15, 'required' => true ));
+
+	$Form->date_input('aipr_date', date2mysql($edited_IPRange->get( 'date' )), T_('Date')); //@Alex: New date field
 
 	$Form->info( T_('User count'), (int)$edited_IPRange->get( 'user_count' ) );
 
