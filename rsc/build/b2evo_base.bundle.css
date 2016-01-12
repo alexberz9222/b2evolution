@@ -1215,6 +1215,7 @@ a.overlay_link:hover b {
 .user {
   font-weight: bold;
   word-wrap: break-word;
+  color: #c63;
 }
 .user.anonymous {
   font-weight: bold;
